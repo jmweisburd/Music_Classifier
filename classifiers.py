@@ -6,12 +6,6 @@ from training_data import *
 data_path = "song_data.p"
 td = None
 
-
-print("Reading in song data...")
-load_song_data()
-
-
-
 def load_song_data():
     if (os.path.isfile(data_path)):
         with open(data_path, 'rb') as handle:
@@ -24,3 +18,7 @@ def load_song_data():
         td.fill_mfcc_matrix()
         with open(data_path, 'wb') as handle:
             pickle.dump(td, handle)
+
+
+print("Reading in song data...")
+load_song_data()
