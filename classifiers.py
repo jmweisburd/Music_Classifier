@@ -10,6 +10,8 @@ def load_song_data():
     if (os.path.isfile(data_path)):
         with open(data_path, 'rb') as handle:
             td = pickle.load(handle)
+            print("Got Here")
+            return td
     else:
         td = training_data()
         td.read_all_songs()
@@ -18,7 +20,9 @@ def load_song_data():
         td.fill_mfcc_matrix()
         with open(data_path, 'wb') as handle:
             pickle.dump(td, handle)
+        return td
 
 
 print("Reading in song data...")
-load_song_data()
+td = load_song_data()
+print(td.label_list)
